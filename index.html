@@ -17,22 +17,22 @@
 </head>
 <body>
 
-<div class="container" >
+<div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <form class=" form-horizontal" action="#" method="post"  id="contact_form">
-
+            <form class=" form-horizontal" id="contact_form" method="post">
                 <center>
-
+                <i style= "color:black;" class="fa fa-envelope" data-wow-delay=".1s"></i>
+                <fieldset>
                     <!-- Form Name -->
-                    <legend><h2 class=""><center>İLETİŞİME GEÇ </center></h2></legend>
+                    <legend><h2 class="">İLETİŞİME GEÇ</h2></legend>
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label">Ad</label>
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input  name="first_name" placeholder="Ad" class="form-control"  type="text">
+                                <input id="name" name="first_name" placeholder="Ad" class="form-control"  type="text">
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="last_name" placeholder="Soyad" class="form-control"  type="text">
+                                <input id ="surname" name="last_name" placeholder="Soyad" class="form-control"  type="text">
                             </div>
                         </div>
                     </div>
@@ -80,18 +80,18 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                <textarea class="form-control" name="comment" placeholder="Mesaj"></textarea>
+                                <textarea id="message" class="form-control" name="comment" placeholder="Mesaj"></textarea>
                             </div>
                         </div>
                     </div>
 
                     <!-- Success message -->
-                    <div class="alert alert-success" role="alert" id="success_message_success">Başarılı
+                    <div class=" alert alert-success" style="display: none;" role="alert" id="success_message_success">Başarılı
                         <i class="glyphicon glyphicon-thumbs-up"></i> Mesajınız İletildi
                     </div>
-                    <!--<div class="alert alert-warning" role="alert" id="success_message_warning">Başarısız
+                    <div class="alert alert-warning"  style="display: none;" role="alert" id="success_message_warning">Başarısız
                         <i class="glyphicon glyphicon-thumbs-down"></i> Mesajınız İletilmedi
-                    </div> -->
+                    </div><br>
                     <!-- Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label"></label>
@@ -102,10 +102,9 @@
                 </fieldset>
             </form>
 
-            <!-- /.container -->
+            </center>     <!-- /.container -->
         </div>
     </div>
-</body>
 <!-- jQuery -->
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.js"></script>
@@ -192,28 +191,32 @@
                                 }
                             }
                         }
+                    },
+            submitHandler: function(validator, form, submitButton) {
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var message = $("#message").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "mail.php",
+                    data: "name=" + name + "&email=" + email + "&message=" + message,
+                    success : function(data){
+                        if(data == 1) {
+                            $('#success_message_success').css('display', 'block');
+                        }
+                        else{
+                            $('#success_message_warning').css('display', 'block');
+                        }
                     }
-                })
-                .on('success.form.bv', function(e) {
-                    $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                    $('#contact_form').data('bootstrapValidator').resetForm();
-
-                    // Prevent form submission
-                    e.preventDefault();
-
-                    // Get the form instance
-                    var $form = $(e.target);
-
-                    // Get the BootstrapValidator instance
-                    var bv = $form.data('bootstrapValidator');
-
-                    // Use Ajax to submit form data
-                    $.post($form.attr('action'), $form.serialize(), function(result) {
-                        console.log(result);
-                    }, 'json');
                 });
+
+
+            }
+        });
     });
 
 
 </script>
+</body>
 </html>
