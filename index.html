@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-lg-12">
             <form class=" form-horizontal" id="contact_form" method="post">
-
+<center>
                 <i style= "color:black;" class="fa fa-envelope" data-wow-delay=".1s"></i>
                 <fieldset>
                     <!-- Form Name -->
@@ -79,7 +79,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                <textarea id="message" class="form-control" name="comment" placeholder="Mesaj"></textarea>
+                                <textarea id="message" class="form-control" name="message" placeholder="Mesaj"></textarea>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                 </fieldset>
-
+</center>
 
             </form>
             </div>
@@ -173,16 +173,13 @@
                                 notEmpty: {
                                     message: 'Lütfen Telefon Numarasınızı Giriniz'
                                 },
-                                phone: {
-                                    country: 'Turkey',
-                                    message: 'Lütfen Geçerli Bir Telefon Numarası Giriniz'
-                                },
                                 regexp: {
-                                    message: 'Lütfen Türkçe Karekter Kullanmayınız.',
-                                    regexp:/^[5]{1}[0-9]{2}[0-9]{3}[0-9]{4}$/i }
+                                    regexp:/^[5]{1}[0-9]{2}[0-9]{3}[0-9]{4}$/i,
+                                    message: 'Lütfen Geçerli Bir Telefon Numarası Giriniz'
+                                }
                             }
                         },
-                        comment: {
+                        message: {
                             validators: {
                                 stringLength: {
                                     min: 10,
@@ -201,20 +198,16 @@
                     url: "mail.php",
                     data: $('#contact_form').serialize(),
                     success : function(data){
-                        if(data == 1) {
+                        if(data == 'Succes') {
                             $('#success_message_success').css('display', 'block');
-                            alert(data);
                         }
                         else{
                             $('#success_message_warning').css('display', 'block');
-                            alert(data);
                         }
                     }
                 });
             }
         });
-
-
     });
 
 
