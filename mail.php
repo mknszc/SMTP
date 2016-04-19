@@ -7,7 +7,7 @@ include_once ('class/sendMail.php');
         $lastName = trim($_GET['last_name']);
         $email = trim($_GET['email']);
         $phone = trim($_GET['phone']);
-        $message = trim($_GET['message']);
+        $message = $_GET['message'];
 
         $message ="
                 <html>
