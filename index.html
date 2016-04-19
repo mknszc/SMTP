@@ -5,7 +5,6 @@
     <title>Simple Mail</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/sosyal.css" rel="stylesheet">
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
@@ -21,7 +20,7 @@
     <div class="row">
         <div class="col-lg-12">
             <form class=" form-horizontal" id="contact_form" method="post">
-                <center>
+
                 <i style= "color:black;" class="fa fa-envelope" data-wow-delay=".1s"></i>
                 <fieldset>
                     <!-- Form Name -->
@@ -100,11 +99,13 @@
                         </div>
                     </div>
                 </fieldset>
-            </form>
 
-            </center>     <!-- /.container -->
+
+            </form>
+            </div>
         </div>
     </div>
+
 <!-- jQuery -->
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.js"></script>
@@ -116,7 +117,6 @@
 <script src="assets/js/jquery.easing.min.js"></script>
 <script src="assets/js/scrolling-nav.js"></script>
 <script src='assets/js/bootstrapvalidator.min.js'></script>
-<script src='http://demowp.cththemes.net/gatherv2/wp-content/themes/gather/js/modernizr.min.js'></script>
 <script>
     $(function() {
         // setTimeout() function will be fired after page is loaded
@@ -176,7 +176,10 @@
                                 phone: {
                                     country: 'Turkey',
                                     message: 'Lütfen Geçerli Bir Telefon Numarası Giriniz'
-                                }
+                                },
+                                regexp: {
+                                    message: 'Lütfen Türkçe Karekter Kullanmayınız.',
+                                    regexp:/^[5]{1}[0-9]{2}[0-9]{3}[0-9]{4}$/i }
                             }
                         },
                         comment: {
@@ -208,8 +211,6 @@
                         }
                     }
                 });
-
-
             }
         });
 
@@ -218,4 +219,5 @@
 
 
 </script>
+</body>
 </html>
