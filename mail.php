@@ -9,7 +9,8 @@ include_once ('class/sendMail.php');
         $phone = trim($_GET['phone']);
         $message = $_GET['message'];
 
-        $message ="
+        $message =<<<TAG
+
                 <html>
                     <body>
                         Adı: $name <br/>
@@ -17,7 +18,8 @@ include_once ('class/sendMail.php');
                         Numara: $phone <br/>
                         Messaj: <p>$message</p>
                     </body>
-                </html>";
+                </html>
+TAG;
 
         if (!empty($email)) {
             sendMAil($email, $message);
