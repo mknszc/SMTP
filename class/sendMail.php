@@ -9,7 +9,7 @@
 include_once('class.phpmailer.php');
 include_once('class.smtp.php');
 
-function sendMAil($email, $message) {
+function sendMAil($to, $message) {
     $mail = new PHPMailer();
     $mail->IsSMTP();
     $mail->SMTPAuth = true;
@@ -19,14 +19,15 @@ function sendMAil($email, $message) {
     $mail->Username = 'example@domain.com';
     $mail->Password = '***';
     $mail->SetFrom($mail->Username, 'My Name');
-    $mail->AddAddress($email);
+    $mail->AddAddress($to);
     $mail->CharSet = 'UTF-8';
     $mail->Subject = 'Contact';
     $mail->MsgHTML($message);
 
     if ($mail->Send()) {
         echo 'Succes';
-    } else {
+    }
+    else {
         echo 'Error';
     }
 }

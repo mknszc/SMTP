@@ -197,10 +197,10 @@
                     url: "mail.php",
                     data: $('#contact_form').serialize(),
                     success : function(data){
-                        if(data == 'Succes') {
+                        if (data == 'Succes') {
                             $('#success_message_success').css('display', 'block');
                         }
-                        else{
+                        else {
                             $('#success_message_warning').css('display', 'block');
                         }
                     }
@@ -208,8 +208,6 @@
             }
         });
     });
-
-
 </script>
 </body>
 </html>
