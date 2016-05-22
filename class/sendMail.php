@@ -9,7 +9,7 @@
 include_once('class.phpmailer.php');
 include_once('class.smtp.php');
 
-function sendMAil($to, $message) {
+function sendMail($to, $message) {
     $mail = new PHPMailer();
     $mail->IsSMTP();
     $mail->SMTPAuth = true;
